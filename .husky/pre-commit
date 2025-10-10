@@ -1,0 +1,5 @@
+# ESLint 실행
+pnpm lint
+
+# TypeScript 타입 체크
+pnpm exec tsc --noEmit
