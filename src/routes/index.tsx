@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { Button } from 'vd-component';
+import { Button } from 'antd';
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,

@@ -1,6 +1,15 @@
 import { redirect } from '@tanstack/react-router';
 import axios from 'axios';
 
+export const client = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
+  // timeout: 10000,
+  // headers: {
+  //   'Access-Control-Allow-Origin': '*',
+  // },
+});
+
 // TODO: 로그인 시스템 모듈로 변경
 const useServiceAuthManager = {
   getState: () => ({
@@ -45,15 +54,6 @@ const processQueueError = (error: unknown) => {
   // 큐 초기화
   failedQueue = [];
 };
-
-export const client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-  withCredentials: true,
-  // timeout: 10000,
-  // headers: {
-  //   'Access-Control-Allow-Origin': import.meta.env.VITE_API_URL,
-  // },
-});
 
 export const refreshClient = axios.create({
   baseURL: import.meta.env.VITE_API_URL,

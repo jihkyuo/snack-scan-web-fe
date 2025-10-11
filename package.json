@@ -1,28 +1,29 @@
 {
-  "name": "spa-web-boilerplate",
+  "name": "snack-scan-web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3000 --host",
+    "dev": "vite --port 3005 --host",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky"
   },
   "dependencies": {
+    "@ant-design/icons": "5.x",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
     "@hookform/resolvers": "^5.1.1",
     "@tanstack/react-query": "^5.90.1",
     "@tanstack/react-query-devtools": "^5.90.1",
     "@tanstack/react-router": "^1.131.50",
+    "antd": "^5.27.4",
     "axios": "^1.12.2",
     "dayjs": "^1.11.13",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.60.0",
-    "vd-component": "^1.1.101",
     "zod": "^4.1.11"
   },
   "devDependencies": {
