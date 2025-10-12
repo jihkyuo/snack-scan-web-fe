@@ -22,12 +22,12 @@ export const RootLayout = () => {
             },
             {
               label: '매장',
-              key: 'stores',
+              key: '/stores',
               icon: <ShopOutlined />,
             },
             {
               label: '직원관리',
-              key: 'members',
+              key: '/members',
               icon: <UserOutlined />,
             },
           ]}
