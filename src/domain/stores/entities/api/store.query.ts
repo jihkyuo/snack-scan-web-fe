@@ -1,4 +1,8 @@
-import { getStoresApi } from '@/domain/stores/entities/api/store.service';
+import {
+  getStoreEmployeesApi,
+  getStoreProductsApi,
+  getStoresApi,
+} from '@/domain/stores/entities/api/store.service';
 import { createQueryKeyStore } from '@lukemorales/query-key-factory';
 
 export const storeQueryKeys = createQueryKeyStore({
@@ -6,6 +10,14 @@ export const storeQueryKeys = createQueryKeyStore({
     list: () => ({
       queryKey: ['list'],
       queryFn: getStoresApi,
+    }),
+    employees: (storeId: number) => ({
+      queryKey: [storeId],
+      queryFn: () => getStoreEmployeesApi(storeId),
+    }),
+    products: (storeId: number) => ({
+      queryKey: [storeId],
+      queryFn: () => getStoreProductsApi(storeId),
     }),
   },
 });

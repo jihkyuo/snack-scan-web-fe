@@ -1,0 +1,1 @@
+export const LOGGED_IN_MEMBER_ID = 1;
