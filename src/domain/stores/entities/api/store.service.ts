@@ -1,9 +1,11 @@
 import { LOGGED_IN_MEMBER_ID } from '@/domain/members/entities/constants';
 import type {
   CreateStoreForm,
+  CreateStoreNewProductForm,
+  CreateStoreProductForm,
   EmployeeDto,
   StoreDto,
-  StoreProductDto,
+  StoreProductDto
 } from '@/domain/stores/entities/api/store.dto';
 import { client } from '@/shared/api/client';
 
@@ -31,5 +33,22 @@ export const getStoreEmployeesApi = async (storeId: number) => {
 
 // 매장 상품 목록 조회
 export const getStoreProductsApi = async (storeId: number) => {
-  return (await client.get<StoreProductDto[]>(`/stores/${storeId}/products`)).data;
+  return (await client.get<StoreProductDto[]>(`/stores/${storeId}/products`))
+    .data;
+};
+
+// 매장 상품 추가(기존 상품 추가)
+export const createStoreProductApi = async (
+  storeId: number,
+  body: CreateStoreProductForm
+) => {
+  return (await client.post(`/stores/${storeId}/products`, body)).data;
+};
+
+// 매장 상품 추가(새 상품 추가)
+export const createStoreNewProductApi = async (
+  storeId: number,
+  body: CreateStoreNewProductForm
+) => {
+  return (await client.post(`/stores/${storeId}/products/new`, body)).data;
 };

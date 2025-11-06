@@ -25,3 +25,19 @@ export interface StoreProductDto {
   productBrand: string;
   productPrice: number;
 }
+
+export interface CreateStoreProductForm {
+  minStock: number;
+  currentStock: number;
+  storePrice: number;
+  productId: number;
+}
+
+export interface CreateStoreNewProductForm {
+  minStock: number;
+  currentStock: number;
+  storePrice: number;
+  productName: string;
+  productBrand: string;
+  productPrice: number;
+}
