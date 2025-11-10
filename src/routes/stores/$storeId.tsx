@@ -19,8 +19,8 @@ function RouteComponent() {
   return (
     <Space direction="vertical" style={{ display: 'flex' }}>
       <LowStockAlertCard />
-      <EmployeeCard />
       <StoreProductCard />
+      <EmployeeCard />
     </Space>
   );
 }

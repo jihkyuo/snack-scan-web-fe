@@ -60,6 +60,7 @@ export const StoreProductCard = () => {
       dataIndex: 'currentStock',
       render: (currentStock: number, record: StoreProductDto) => {
         const status = getStockStatus(record);
+
         if (status === 'out') {
           return (
             <Badge
@@ -80,7 +81,7 @@ export const StoreProductCard = () => {
             />
           );
         }
-        return <Badge count={currentStock} showZero />;
+        return <Badge color="blue" count={currentStock} showZero />;
       },
     },
     {
