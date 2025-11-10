@@ -2,12 +2,12 @@ import { type StoreProductDto } from '@/domain/stores/entities/api/store.dto';
 import { storeQueryKeys } from '@/domain/stores/entities/api/store.query';
 import { AddProductButton } from '@/domain/stores/features/addProduct/ui/AddProductButton';
 import { getStockStatus } from '@/domain/stores/features/lowStockAlert/utils/stockStatus';
-import { UpdateStockButton } from '@/domain/stores/features/updateStock/ui/UpdateStockButton';
+import { UpdateProductButton } from '@/domain/stores/features/updateProduct/ui/UpdateProductButton';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from '@tanstack/react-router';
 import { Badge, Card, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 export const StoreProductCard = () => {
   const { storeId } = useParams({ from: '/stores/$storeId' });
@@ -87,10 +87,10 @@ export const StoreProductCard = () => {
       title: '작업',
       key: 'action',
       render: (_, record) => (
-        <UpdateStockButton
+        <UpdateProductButton
           storeId={Number(storeId)}
-          productId={record.id}
-          currentStock={record.currentStock}
+          storeProductId={record.id}
+          storeProduct={record}
         />
       ),
     },

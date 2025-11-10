@@ -24,6 +24,7 @@ export interface StoreProductDto {
   productName: string;
   productBrand: string;
   productPrice: number;
+  supplementStock: number;
 }
 
 export interface CreateStoreProductForm {
@@ -42,6 +43,9 @@ export interface CreateStoreNewProductForm {
   productPrice: number;
 }
 
-export interface UpdateStockForm {
-  currentStock: number;
+export interface UpdateStoreProductRequestDto {
+  minStock?: number;
+  currentStock?: number;
+  supplementStock?: number;
+  storePrice?: number;
 }
