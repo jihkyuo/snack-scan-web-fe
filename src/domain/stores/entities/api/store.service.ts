@@ -5,7 +5,8 @@ import type {
   CreateStoreProductForm,
   EmployeeDto,
   StoreDto,
-  StoreProductDto
+  StoreProductDto,
+  UpdateStockForm,
 } from '@/domain/stores/entities/api/store.dto';
 import { client } from '@/shared/api/client';
 
@@ -51,4 +52,15 @@ export const createStoreNewProductApi = async (
   body: CreateStoreNewProductForm
 ) => {
   return (await client.post(`/stores/${storeId}/products/new`, body)).data;
+};
+
+// 매장 상품 재고 업데이트
+export const updateStoreProductStockApi = async (
+  storeId: number,
+  productId: number,
+  body: UpdateStockForm
+) => {
+  return (
+    await client.put(`/stores/${storeId}/products/${productId}/stock`, body)
+  ).data;
 };

@@ -41,3 +41,7 @@ export interface CreateStoreNewProductForm {
   productBrand: string;
   productPrice: number;
 }
+
+export interface UpdateStockForm {
+  currentStock: number;
+}

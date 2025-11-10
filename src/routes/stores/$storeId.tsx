@@ -1,4 +1,5 @@
 import { EmployeeCard } from '@/domain/stores/widgets/EmployeeCard';
+import { LowStockAlertCard } from '@/domain/stores/widgets/LowStockAlertCard';
 import { StoreProductCard } from '@/domain/stores/widgets/ProductCard';
 import { createFileRoute } from '@tanstack/react-router';
 import { Space } from 'antd';
@@ -17,6 +18,7 @@ export const Route = createFileRoute('/stores/$storeId')({
 function RouteComponent() {
   return (
     <Space direction="vertical" style={{ display: 'flex' }}>
+      <LowStockAlertCard />
       <EmployeeCard />
       <StoreProductCard />
     </Space>
