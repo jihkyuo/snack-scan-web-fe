@@ -5,7 +5,7 @@ import type {
 import { useUpdateProductMutation } from '@/domain/stores/features/updateProduct/hooks/useUpdateProductMutation';
 import { Form, InputNumber, message, Modal } from 'antd';
 import { AxiosError } from 'axios';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 interface Props {
   open: boolean;
@@ -35,6 +35,13 @@ export const UpdateProductModal = ({
     [storeProduct]
   );
   const [form] = Form.useForm<UpdateStoreProductRequestDto>();
+
+  // 모달이 열릴 때마다 최신 값으로 폼 필드 업데이트
+  useEffect(() => {
+    if (open) {
+      form.setFieldsValue(initialValues);
+    }
+  }, [open, initialValues, form]);
 
   const handleOk = () => {
     form.submit();
