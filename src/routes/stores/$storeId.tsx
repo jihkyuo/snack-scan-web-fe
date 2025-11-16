@@ -1,3 +1,4 @@
+import { StoreSalesCard } from '@/domain/sales/widgets/StoreSalesCard';
 import { EmployeeCard } from '@/domain/stores/widgets/EmployeeCard';
 import { LowStockAlertCard } from '@/domain/stores/widgets/LowStockAlertCard';
 import { StoreProductCard } from '@/domain/stores/widgets/ProductCard';
@@ -19,6 +20,7 @@ function RouteComponent() {
   return (
     <Space direction="vertical" style={{ display: 'flex' }}>
       <LowStockAlertCard />
+      <StoreSalesCard />
       <StoreProductCard />
       <EmployeeCard />
     </Space>
