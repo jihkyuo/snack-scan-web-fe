@@ -1,12 +1,22 @@
-import { type StoreDto, type StoreProductDto } from '@/domain/stores/entities/api/store.dto';
+import {
+  type StoreDto,
+  type StoreProductDto,
+} from '@/domain/stores/entities/api/store.dto';
 import { storeQueryKeys } from '@/domain/stores/entities/api/store.query';
-import { getLowStockCount } from '@/domain/stores/features/lowStockAlert/utils/filterLowStock';
+import {
+  getLowStockCount,
+  getOutOfStockCount,
+} from '@/domain/stores/features/lowStockAlert/utils/filterLowStock';
 import { getStockStatus } from '@/domain/stores/features/lowStockAlert/utils/stockStatus';
+import {
+  ExclamationCircleOutlined,
+  ShopOutlined,
+  ShoppingOutlined,
+} from '@ant-design/icons';
 import { useQueries, useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { Card, Col, Row, Statistic, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { ShopOutlined, ShoppingOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 
 export const Dashboard = () => {
   const { data: stores } = useQuery(storeQueryKeys.store.list());
@@ -21,11 +31,10 @@ export const Dashboard = () => {
   });
 
   // 모든 상품을 하나의 배열로 합치기
-  const allProducts: StoreProductDto[] =
-    productQueries
-      .map((query) => query.data || [])
-      .flat()
-      .filter((product): product is StoreProductDto => product !== undefined);
+  const allProducts: StoreProductDto[] = productQueries
+    .map((query) => query.data || [])
+    .flat()
+    .filter((product): product is StoreProductDto => product !== undefined);
 
   // 통계 계산
   const totalStores = stores?.length || 0;
@@ -43,15 +52,21 @@ export const Dashboard = () => {
   const storeSummary = stores?.map((store, index) => {
     const storeProducts = productQueries[index]?.data || [];
     const storeLowStockCount = getLowStockCount(storeProducts);
+    const storeOutOfStockCount = getOutOfStockCount(storeProducts);
     return {
       ...store,
       totalProducts: storeProducts.length,
       lowStockCount: storeLowStockCount,
+      outOfStockCount: storeOutOfStockCount,
     };
   });
 
   const storeSummaryColumns: ColumnsType<
-    StoreDto & { totalProducts: number; lowStockCount: number }
+    StoreDto & {
+      totalProducts: number;
+      lowStockCount: number;
+      outOfStockCount: number;
+    }
   > = [
     {
       title: '매장명',
@@ -79,6 +94,16 @@ export const Dashboard = () => {
           <span style={{ color: '#faad14', fontWeight: 'bold' }}>
             <ExclamationCircleOutlined /> {count}
           </span>
+        );
+      },
+    },
+    {
+      title: '재고 없음',
+      dataIndex: 'outOfStockCount',
+      render: (count: number) => {
+        if (count === 0) return <span>{count}</span>;
+        return (
+          <span style={{ color: '#ff4d4f', fontWeight: 'bold' }}>{count}</span>
         );
       },
     },
@@ -141,4 +166,3 @@ export const Dashboard = () => {
     </div>
   );
 };
-

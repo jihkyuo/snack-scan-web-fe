@@ -14,3 +14,10 @@ export const getLowStockCount = (
   if (!products) return 0;
   return products.filter(isLowStock).length;
 };
+
+export const getOutOfStockCount = (
+  products: StoreProductDto[] | undefined
+): number => {
+  if (!products) return 0;
+  return products.filter((p) => p.currentStock === 0).length;
+};
