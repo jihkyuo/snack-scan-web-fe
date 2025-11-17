@@ -1,5 +1,6 @@
 import type { SalesDto } from '@/domain/sales/entities/sales.dto';
 import { salesQueryKeys } from '@/domain/sales/entities/sales.query';
+import { AddStoreSalesButton } from '@/domain/sales/features/addStoreSales/ui';
 import { UploadOutlined } from '@ant-design/icons';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from '@tanstack/react-router';
@@ -42,7 +43,7 @@ export const StoreSalesCard = () => {
       title="매출"
       extra={
         <Space>
-          <Button type="primary">추가</Button>
+          <AddStoreSalesButton />
           <Button icon={<UploadOutlined />} type="primary">
             업로드
           </Button>

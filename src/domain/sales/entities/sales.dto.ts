@@ -8,3 +8,9 @@ export interface SalesDto {
   totalAmount: number;
   saleDate: string;
 }
+
+export interface AddStoreSalesRequestDto {
+  productName: string;
+  quantity: number;
+  unitPrice: number;
+}
