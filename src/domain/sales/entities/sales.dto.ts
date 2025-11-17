@@ -14,3 +14,7 @@ export interface AddStoreSalesRequestDto {
   quantity: number;
   unitPrice: number;
 }
+
+export interface AddStoreSalesBulkRequestDto {
+  salesList: AddStoreSalesRequestDto[];
+}

@@ -1,10 +1,10 @@
 import type { SalesDto } from '@/domain/sales/entities/sales.dto';
 import { salesQueryKeys } from '@/domain/sales/entities/sales.query';
 import { AddStoreSalesButton } from '@/domain/sales/features/addStoreSales/ui';
-import { UploadOutlined } from '@ant-design/icons';
+import { UploadStoreSalesBulkButton } from '@/domain/sales/features/uploadStoreSalesBulk/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from '@tanstack/react-router';
-import { Button, Card, Space, Table } from 'antd';
+import { Card, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
 export const StoreSalesCard = () => {
@@ -44,9 +44,7 @@ export const StoreSalesCard = () => {
       extra={
         <Space>
           <AddStoreSalesButton />
-          <Button icon={<UploadOutlined />} type="primary">
-            업로드
-          </Button>
+          <UploadStoreSalesBulkButton />
         </Space>
       }
     >

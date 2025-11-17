@@ -1,4 +1,5 @@
 import type {
+  AddStoreSalesBulkRequestDto,
   AddStoreSalesRequestDto,
   SalesDto,
 } from '@/domain/sales/entities/sales.dto';
@@ -15,4 +16,12 @@ export const addStoreSalesApi = async (
   body: AddStoreSalesRequestDto
 ) => {
   return (await client.post(`sales/stores/${storeId}`, body)).data;
+};
+
+// 매장 매출 추가(벌크)
+export const addStoreSalesBulkApi = async (
+  storeId: number,
+  body: AddStoreSalesBulkRequestDto
+) => {
+  return (await client.post(`sales/stores/${storeId}/bulk`, body)).data;
 };
