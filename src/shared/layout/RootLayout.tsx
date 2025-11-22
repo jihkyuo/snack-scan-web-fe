@@ -26,6 +26,11 @@ export const RootLayout = () => {
               icon: <ShopOutlined />,
             },
             {
+              label: '공급업체',
+              key: '/suppliers',
+              icon: <ShopOutlined />,
+            },
+            {
               label: '직원관리',
               key: '/members',
               icon: <UserOutlined />,
