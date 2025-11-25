@@ -1,10 +1,11 @@
 import type { SupplierDto } from '@/domain/suppliers/entities/api/supplier.dto';
 import { supplierQueryKeys } from '@/domain/suppliers/entities/api/supplier.query';
 import { AddSupplierButton } from '@/domain/suppliers/features/addSupplier/ui';
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { DeleteSupplierButton } from '@/domain/suppliers/features/deleteSupplier/ui';
+import { EditSupplierButton } from '@/domain/suppliers/features/editSupplier/ui/EditSupplierButton';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link } from '@tanstack/react-router';
-import { Button, Card, Space, Table } from 'antd';
+import { createFileRoute } from '@tanstack/react-router';
+import { Card, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
 export const Route = createFileRoute('/suppliers/')({
@@ -18,11 +19,6 @@ function RouteComponent() {
     {
       title: '이름',
       dataIndex: 'name',
-      render: (name: string, record: SupplierDto) => (
-        <Link to={`/suppliers/$supplierId`} params={{ supplierId: record.id }}>
-          {name}
-        </Link>
-      ),
     },
     {
       title: '주소',
@@ -43,14 +39,10 @@ function RouteComponent() {
     {
       title: '작업',
       dataIndex: 'id',
-      render: () => (
+      render: (_, record) => (
         <Space>
-          <Button size="small" icon={<EditOutlined />} type="link">
-            수정
-          </Button>
-          <Button size="small" icon={<DeleteOutlined />} type="primary" danger>
-            삭제
-          </Button>
+          <EditSupplierButton supplierId={record.id} supplier={record} />
+          <DeleteSupplierButton id={record.id} />
         </Space>
       ),
     },

@@ -14,3 +14,11 @@ export interface CreateSupplierRequestDto {
   email: string;
   website?: string;
 }
+
+export interface UpdateSupplierRequestDto {
+  name?: string;
+  address?: string;
+  phoneNumber?: string;
+  email?: string;
+  website?: string;
+}
